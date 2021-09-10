@@ -62,7 +62,7 @@ public class Employee {
 	
 	@Override
 	public int hashCode() {
-		int result = 11* name.hashCode()+ 13* new Double(salary).hashCode() + 7* hireDay.hashCode();
+		int result = 11* name.hashCode()+ 13* Double.valueOf(salary).hashCode() + 7* hireDay.hashCode();
 		return result;
 	}
 	
