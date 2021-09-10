@@ -1,4 +1,4 @@
-package junit;
+package junitTestClass;
 
 import java.math.BigDecimal;
 public class BService {
@@ -14,7 +14,7 @@ public class BService {
                 return money;
             } else {
                 throw new Exception("unknown type:" + type);
-            } 
+            }
         }
     }
 }

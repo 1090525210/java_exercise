@@ -16,25 +16,44 @@ public class TestBService {
     }
 
     @Test
+    public void checkNull() {
+    	Throwable exception = assertThrows(Exception.class, () -> demo.getRenMinBi(null, "SGP"));
+        assertEquals("money cannot be null", exception.getMessage());
+    }
+    @Test
     public void checkAMD() {
-    	assertAll("checkAMD",()->assertFalse(demo.checkNumber(3, 2, 1)),
-    			()->assertFalse(demo.checkNumber(5, 4, 0)));
-    }
-    @Test
-    public void checkNumber_test_a_b_true() {
-        assertAll("checkAB",()->assertEquals(demo.getRenMinBi(new BigDecimal(10), "AMD")),
-        		()->assertTrue(demo.checkNumber(10, 5, 0)),
-        		()->assertTrue(demo.checkNumber(5, 2, 1)));
+        assertAll("checkAMD",()->assertEquals(demo.getRenMinBi(mon,"AMD"), mon.multiply(new BigDecimal(6.5)))
+        		);
     }
 
     @Test
-    public void checkNumber_test_b_c_true() {
-        Assertions.assertTrue(demo.checkNumber(5, 6, 5));
+    public void checkJPY() {
+    	assertAll("checkjpy",()->assertEquals(demo.getRenMinBi(mon,"JPY"), mon.multiply(new BigDecimal(0.06)))
+        		);    
+    	}
+    
+    @Test
+    public void checkCNY() {
+    	assertAll("checkcny",()->assertTrue(demo.getRenMinBi(mon,"CNY").compareTo(mon)==0),
+    			()->assertEquals(demo.getRenMinBi(mon,"CNY"), mon)
+        		);    
+    	} 
+    
+    @Test
+    void exceptionTesting() {        
+        Throwable exception = assertThrows(Exception.class, () -> demo.getRenMinBi(mon, "SGP"));
+        assertEquals("unknown type:SGP", exception.getMessage());
     }
 
+  
     @Test
-    public void checkNumber_test_c_true() {
-        Assertions.assertTrue(demo.checkNumber(1, 2, -4));
+    public void checkjpy() {
+    	try {
+			Assertions.assertEquals(demo.getRenMinBi(mon,"JPY"), mon.multiply(new BigDecimal(0.06)));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 }
 

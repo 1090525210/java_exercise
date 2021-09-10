@@ -23,9 +23,9 @@ public class Test {
 		stlist.add(new Student(20,"Karl"));
 		stlist.add(new Student(22,"John"));
 		stlist.add(new Student(21,"Tom"));
-		stlist.add(new Student(23,"Sun"));
+		stlist.add(new Student(23,"Sun")); 
 		stlist.add(new Student(20,"Kar"));
-		stlist.add(new Student(20,"Karls"));
+		stlist.add(new Student(20,"Karls")); 
 		stlist.add(new Student(20,"Kara"));
 		
 		
